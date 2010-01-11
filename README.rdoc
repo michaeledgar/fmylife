@@ -1,18 +1,81 @@
-= fmylife
+= FMyLife
 
-Description goes here.
+* http://www.carboni.ca/
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== DESCRIPTION:
 
-== Copyright
+This gem allows the user to access the fmylife.com API, which includes
+reading stories, reading comments, moderating stories that are submitted,
+submitting stories, submitting comments, and searching for stories.
 
-Copyright (c) 2010 Michael Edgar. See LICENSE for details.
+In addition, this gem lets you swap in and out which XML parser you use.
+Since not everyone can take advantage of compiled xml parsers,
+the typically built-in REXML library is available as well.
+
+== FEATURES/PROBLEMS:
+
+* Full access to the fmylife.com API, including reading and submitting
+  stories and submissions
+* Swap out which XML parser you want to use:
+  * libxml-ruby
+  * hpricot
+  * nokogiri
+  * REXML
+
+== SYNOPSIS:
+
+The following code will connect with your API key, authenticate as a user,
+grab a page of the latest stories and then download all the comments for the
+very latest story. Then, it will print the names of each comment's author.
+
+   acc = FMyLife::Account.new("yourapikey")
+   acc.authenticate(username,password)
+   latest = acc.latest.first # get the latest story
+   acc.story(latest) # pull comments
+   acc.comments.each do |comm|
+       puts comm.author
+   end
+
+More interestingly, we should be able to submit stories!
+
+   story = FMyLife::Story.new(:text => "my life sucks. FML", 
+                              :author => "Anonymous", 
+                              :category => :love)
+
+See the individual docs for more examples.
+
+== REQUIREMENTS:
+
+* none, though one of the following is recommended: 
+  * hpricot 
+  * nokogiri
+  * libxml-ruby 
+
+== INSTALL:
+
+* sudo gem install fmylife
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2009 Michael J. Edgar
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

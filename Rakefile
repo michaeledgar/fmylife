@@ -5,8 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "fmylife"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %q{This gem allows the user to access the fmylife.com API, which includes reading and commenting on stories.}
+    gem.description = %q{This gem allows the user to access the fmylife.com API, which includes
+    reading stories, reading comments, moderating stories that are submitted,
+    submitting stories, submitting comments, and searching for stories.
+
+    In addition, this gem lets you swap in and out which XML parser you use.
+    Since not everyone can take advantage of compiled xml parsers,
+    the typically built-in REXML library is available as well.}
     gem.email = "michael.j.edgar@dartmouth.edu"
     gem.homepage = "http://github.com/michaeledgar/fmylife"
     gem.authors = ["Michael Edgar"]
