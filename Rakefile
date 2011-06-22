@@ -14,7 +14,7 @@ begin
     Since not everyone can take advantage of compiled xml parsers,
     the typically built-in REXML library is available as well.}
     gem.email = "michael.j.edgar@dartmouth.edu"
-    gem.homepage = "http://github.com/michaeledgar/fmylife"
+    gem.homepage = "http://www.carboni.ca/projects/p/fmylife"
     gem.authors = ["Michael Edgar"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
